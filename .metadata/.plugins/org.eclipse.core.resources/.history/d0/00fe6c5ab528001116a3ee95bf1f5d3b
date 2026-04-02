@@ -1,0 +1,209 @@
+package sit707_tasks;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+/**
+ * @author Ahsan Habib
+ */
+public class DateUtilTest {
+
+	private void assertDate(DateUtil date, int expectedDay, int expectedMonth, int expectedYear) {
+		Assert.assertEquals(expectedDay, date.getDay());
+		Assert.assertEquals(expectedMonth, date.getMonth());
+		Assert.assertEquals(expectedYear, date.getYear());
+	}
+
+	private void assertIncrement(int day, int month, int year, int expectedDay, int expectedMonth, int expectedYear) {
+		DateUtil date = new DateUtil(day, month, year);
+		System.out.println("increment > " + date);
+		date.increment();
+		System.out.println(date);
+		assertDate(date, expectedDay, expectedMonth, expectedYear);
+	}
+
+	private void assertDecrement(int day, int month, int year, int expectedDay, int expectedMonth, int expectedYear) {
+		DateUtil date = new DateUtil(day, month, year);
+		System.out.println("decrement > " + date);
+		date.decrement();
+		System.out.println(date);
+		assertDate(date, expectedDay, expectedMonth, expectedYear);
+	}
+
+	@Test
+	public void testStudentIdentity() {
+		String studentId = "YOUR_STUDENT_ID";
+		Assert.assertNotNull("Student ID is null", studentId);
+		Assert.assertFalse("Student ID is empty", studentId.trim().isEmpty());
+	}
+
+	@Test
+	public void testStudentName() {
+		String studentName = "YOUR_FULL_NAME";
+		Assert.assertNotNull("Student name is null", studentName);
+		Assert.assertFalse("Student name is empty", studentName.trim().isEmpty());
+	}
+
+	@Test
+	public void testMaxJanuary31ShouldIncrementToFebruary1() {
+		assertIncrement(31, 1, 2024, 1, 2, 2024);
+	}
+
+	@Test
+	public void testMaxJanuary31ShouldDecrementToJanuary30() {
+		assertDecrement(31, 1, 2024, 30, 1, 2024);
+	}
+
+	@Test
+	public void testNominalJanuary() {
+		assertIncrement(15, 1, 2024, 16, 1, 2024);
+	}
+
+	@Test
+	public void testMinJanuary1ShouldIncrementToJanuary2() {
+		assertIncrement(1, 1, 2024, 2, 1, 2024);
+	}
+
+	@Test
+	public void testMinJanuary1ShouldDecrementToDecember31() {
+		assertDecrement(1, 1, 2024, 31, 12, 2023);
+	}
+
+	/*
+	 * Previous date test cases from the table.
+	 */
+
+	@Test
+	public void test1A_PreviousDate() {
+		assertDecrement(1, 6, 1994, 31, 5, 1994);
+	}
+
+	@Test
+	public void test2A_PreviousDate() {
+		assertDecrement(2, 6, 1994, 1, 6, 1994);
+	}
+
+	@Test
+	public void test3A_PreviousDate() {
+		assertDecrement(15, 6, 1994, 14, 6, 1994);
+	}
+
+	@Test
+	public void test4A_PreviousDate() {
+		assertDecrement(30, 6, 1994, 29, 6, 1994);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void test5A_InvalidDate() {
+		new DateUtil(31, 6, 1994);
+	}
+
+	@Test
+	public void test6A_PreviousDate() {
+		assertDecrement(15, 1, 1994, 14, 1, 1994);
+	}
+
+	@Test
+	public void test7A_PreviousDate() {
+		assertDecrement(15, 2, 1994, 14, 2, 1994);
+	}
+
+	@Test
+	public void test8A_PreviousDate() {
+		assertDecrement(15, 11, 1994, 14, 11, 1994);
+	}
+
+	@Test
+	public void test9A_PreviousDate() {
+		assertDecrement(15, 12, 1994, 14, 12, 1994);
+	}
+
+	@Test
+	public void test10A_PreviousDate() {
+		assertDecrement(15, 6, 1700, 14, 6, 1700);
+	}
+
+	@Test
+	public void test11A_PreviousDate() {
+		assertDecrement(15, 6, 1701, 14, 6, 1701);
+	}
+
+	@Test
+	public void test12A_PreviousDate() {
+		assertDecrement(15, 6, 2023, 14, 6, 2023);
+	}
+
+	@Test
+	public void test13A_PreviousDate() {
+		assertDecrement(15, 6, 2024, 14, 6, 2024);
+	}
+
+	/*
+	 * Next date test cases from the table.
+	 */
+
+	@Test
+	public void test1B_NextDate() {
+		assertIncrement(1, 6, 1994, 2, 6, 1994);
+	}
+
+	@Test
+	public void test2B_NextDate() {
+		assertIncrement(2, 6, 1994, 3, 6, 1994);
+	}
+
+	@Test
+	public void test3B_NextDate() {
+		assertIncrement(15, 6, 1994, 16, 6, 1994);
+	}
+
+	@Test
+	public void test4B_NextDate() {
+		assertIncrement(30, 6, 1994, 1, 7, 1994);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void test5B_InvalidDate() {
+		new DateUtil(31, 6, 1994);
+	}
+
+	@Test
+	public void test6B_NextDate() {
+		assertIncrement(15, 1, 1994, 16, 1, 1994);
+	}
+
+	@Test
+	public void test7B_NextDate() {
+		assertIncrement(15, 2, 1994, 16, 2, 1994);
+	}
+
+	@Test
+	public void test8B_NextDate() {
+		assertIncrement(15, 11, 1994, 16, 11, 1994);
+	}
+
+	@Test
+	public void test9B_NextDate() {
+		assertIncrement(15, 12, 1994, 16, 12, 1994);
+	}
+
+	@Test
+	public void test10B_NextDate() {
+		assertIncrement(15, 6, 1700, 16, 6, 1700);
+	}
+
+	@Test
+	public void test11B_NextDate() {
+		assertIncrement(15, 6, 1701, 16, 6, 1701);
+	}
+
+	@Test
+	public void test12B_NextDate() {
+		assertIncrement(15, 6, 2023, 16, 6, 2023);
+	}
+
+	@Test
+	public void test13B_NextDate() {
+		assertIncrement(15, 6, 2024, 16, 6, 2024);
+	}
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="java.lang.Class">
+		<item key="replaceBarOpen" value="true"/>
+		<list key="findhistory">
+			<item value="options.setBinary(&quot;/usr/bin/chromium-browser&quot;);"/>
+			<item value="System.setProperty(&quot;webdriver.chrome.driver&quot;, &quot;/usr/bin/chromedriver&quot;);"/>
+			<item value="System.setProperty(&quot;webdriver.chrome.driver&quot;, &quot;/home/mahabib/java_lib/chromedriver-linux64/chromedriver&quot;);"/>
+		</list>
+		<list key="replacehistory">
+			<item value="options.setBinary(&quot;/run/host/usr/bin/chromium-browser&quot;);"/>
+			<item value="System.setProperty(&quot;webdriver.chrome.driver&quot;, &quot;/run/host/usr/bin/chromedriver&quot;);"/>
+		</list>
+	</section>
+</section>
